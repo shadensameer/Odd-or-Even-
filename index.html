@@ -6,101 +6,101 @@
     <title>Document</title>
 </head>
 <style>
+    *{
+        font-family: monospace;
+        font-weight: bolder;
+    }
     body{
-        background-color: #952323;
+        background-color: #394461;
+    }
+    input{
+        background-color: #EAE3DB;
+        margin: 5px;
+        font-size: 20px;
+        width: 90%;
+        border-radius: 5px;
         text-align: center;
-        color: white;
     }
     button{
-        background-color: #FFCB8E;
-        font-size: 25px;
-        color: Black;
-        font-weight: bolder;
-        border: none;
-        border-radius: 20px;
-        padding: 18px 28px ;
-        font-family: Georgia;
-        margin: 20px 30px;
+        background-color: #D13F30;
+        color: #FDFEFE;
+        border-radius: 5px;
+        font-size: 15px;
         
     }
-    .Attempts{
-        background-color: #b8746c8f;
-        max-width: 400px;
-        margin: auto;
-        border-radius: 20px;
-        font-size: 25px;
-        border:solid  white;
+    .userinput{
         display: flex;
-        justify-content: space-around;
-        font-weight: bolder;
+        flex-direction: column;
+        padding: 20px;
     }
-    .userdata{
-        background-color: #b8746c8f;
-        max-width: 400px;
-        margin: auto;
-        border-radius: 20px;
-        font-size: 25px;
-        border:solid  white;
+    .Buttons{
         display: flex;
-        justify-content: space-around;
-        margin-top: 50px;
-        font-weight: bolder;
+        flex-direction: column;
+        margin-top: 15px;
     }
-
-    .question{
-        font-size: 15px;
-        font-weight: bold;
+    .container{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        background-color: #252D44;
+        padding: 10px;
+        border-radius: 5px;
     }
-    .buttons{
-        display: flex;
-        justify-content: space-around;
-        max-width: 400px;
-        margin: auto;
-    }
-    #heading{
-        color: white;
+    .result{
+        background-color: #181F32;
+        color: #FDFEFE;
+        padding: 5px;
+        text-align: right;
+        border-radius: 5px;
+        font-family: monospace;
+        font-size: 30px;
     }
 </style>
+
 <body>
-    <h1 id="heading">Even or Odd? game</h1>
-    <div class="Attempts">
-        <p>Attempts</p>
-        <p id="Attemp">0</p>
+    <h3 class="result" id="result">0</h3>
+   <div class="container">
+
+    <div class="userinput">
+        <input type="text" placeholder="0" id="num1">
+        <input type="text" placeholder="0" id="num2">
     </div>
-    <div class="userdata">
-        <p>Score</p>
-        <p id="userScore">0</p>
+    <div class="Buttons">
+        <button onclick="add()">Add</button>
+        <button onclick="subtract()">Subtract</button>
+        <button onclick="multiply()">Multiply</button>
+        <button onclick="Divide()">Divide</button>
     </div>
 
-    <p class="question">I think of a number, Do you think it's Odd or Even?</p>
-    <div class="buttons">
-        <button onclick="guess('odd')">Odd</button>
-        <button onclick= "guess('even')" >Even</button>
-    </div>
-    <script>
-        let Attempts = 0;
-        let Score = 0;
+   </div>
 
-        function guess(userGuess){
-            Attempts++;
-            document.getElementById("Attemp").innerHTML = Attempts;
-            
-            const RandomNumber = Math.floor(Math.random() * 100) + 1;
-            
-            const CorrectAnswer = (RandomNumber % 2 == 0) ? "even" : "odd" ;
+   <script>
+    function add() {
+        let num1 =  parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        let result = num1 + num2;
+        document.getElementById("result").innerHTML = result;
+    }
 
-            if (userGuess == CorrectAnswer) {
-                Score++;
-                document.getElementById("userScore").innerHTML = Score;
-                document.getElementById('heading').innerText =
-                     `Correct! The number was ${randomNumber} `;
-            } else{
-                document.getElementById('heading').innerText =
-                     `Wrong! The number was ${RandomNumber} `;
-            }
-        }
+    function subtract() {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        let result = num1 - num2;
+        document.getElementById("result").innerHTML = result;
+    }
 
+    function multiply() {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        let result = num1 * num2;
+        document.getElementById("result").innerHTML = result;
+    }
 
-    </script>
+    function Divide() {
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+        let result = num1 / num2;
+        document.getElementById("result").innerHTML = result;
+    }
+   </script>
 </body>
 </html>
